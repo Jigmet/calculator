@@ -4,6 +4,10 @@ function handleInput(key){
 
 }
 
+function previewContent(){
+  return $('#preview').html();
+}
+
 $(document).ready(function() {
   $('.key').click(function() {
     var key = $(this).text();
@@ -12,8 +16,12 @@ $(document).ready(function() {
       handleInput(key);
     }
   }
-      else{
-        handleInput(key);
-      }
+      else if (key == "DEL") {
+      var preview = previewContent();
+      var newPreview = preview.slice(0, -1);
+      $('#preview').html(newPreview);
+    } else{
+      handleInput(key);
+    }
   });
 });
